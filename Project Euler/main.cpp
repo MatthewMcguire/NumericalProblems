@@ -148,6 +148,27 @@ void problem13Solver(void)
     dataFile.close();
 }
 
+void problem15Solver(void)
+{
+    const int boundary = 21;
+    long latticePaths[boundary][boundary];
+    latticePaths[0][0] = 0;
+    for(int i = 1; i < boundary; i++)
+    {
+        latticePaths[i][0] = 1;
+        latticePaths[0][i] = 1;
+    }
+    for(int i = 1; i < boundary; i++)
+    {
+        for(int j = 1; j < boundary; j++)
+        {
+            latticePaths[i][j] = latticePaths[i-1][j] + latticePaths[i][j-1];
+        }
+    }
+    std::cout << "for (20,20) sized lattice, there are " << latticePaths[20][20]
+    << " paths from upper left to lower right." << std::endl;
+}
+
 void eulerSolution(int problem)
 {
     switch(problem)
@@ -160,6 +181,10 @@ void eulerSolution(int problem)
             std::cout << "problem 14 finds the longest Collatz sequence when beginning with a number < 10^6.\n";
             problem14Solver();
             break;
+        case 15:
+        std::cout << "problem 15 finds the number of lattice paths on an mxn grid when motion is only allowed to the right or down.\n";
+        problem15Solver();
+        break;
         default:
             std::cout << "sorry no solution yet for that one!\n";
     }
@@ -173,6 +198,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "Project Euler Results:\n";
     eulerSolution(13);
     eulerSolution(14);
+    eulerSolution(15);
     std::cout << std::endl;
     return 0;
 }
