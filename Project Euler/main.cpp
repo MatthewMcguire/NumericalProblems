@@ -169,21 +169,36 @@ void problem15Solver(void)
     << " paths from upper left to lower right." << std::endl;
 }
 
+void problem16Solver(void)
+{
+    uint sum = 0;
+    std::string twoToThousand = "10715086071862673209484250490600018105614048117055336074437503883703510511249361224931983788156958581275946729175531468251871452856923140435984577574698574803934567774824230985421074605062371141877954182153046474983581941267398767559165543946077062914571196477686542167660429831652624386837205668069376";
+    for (int i = 0; i < twoToThousand.length(); i++)
+    {
+        sum += std::stoi(twoToThousand.substr(i,1), nullptr, 10);
+    }
+    std::cout << "Summing the digits of2^1000 (as expressed in base 10: " << sum << std::endl;
+}
+
 void eulerSolution(int problem)
 {
     switch(problem)
     {
         case 13:
-            std::cout << "problem 13 sums 100 fifty-digit numbers.\n";
+            std::cout << "Problem 13 sums 100 fifty-digit numbers.\n";
             problem13Solver();
             break;
         case 14:
-            std::cout << "problem 14 finds the longest Collatz sequence when beginning with a number < 10^6.\n";
+            std::cout << "Problem 14 finds the longest Collatz sequence when beginning with a number < 10^6.\n";
             problem14Solver();
             break;
         case 15:
-        std::cout << "problem 15 finds the number of lattice paths on an mxn grid when motion is only allowed to the right or down.\n";
+        std::cout << "Problem 15 finds the number of lattice paths on an mxn grid when motion is only allowed to the right or down.\n";
         problem15Solver();
+        break;
+        case 16:
+        std::cout << "Problem 16 finds the sum of the digits of 2^1000.\n";
+        problem16Solver();
         break;
         default:
             std::cout << "sorry no solution yet for that one!\n";
@@ -199,6 +214,7 @@ int main(int argc, const char * argv[]) {
     eulerSolution(13);
     eulerSolution(14);
     eulerSolution(15);
+    eulerSolution(16);
     std::cout << std::endl;
     return 0;
 }
